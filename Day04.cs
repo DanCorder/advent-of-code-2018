@@ -1094,42 +1094,27 @@ namespace advent_of_code_2018
 
         public static int SolveProblem1()
         {
-            var lines = Problem1Input.SplitToLines();
-            var linesByDate = lines.ToDictionary(l => new DateTime(
-                Int32.Parse(l.Substring(1,4)),
-                Int32.Parse(l.Substring(6,2)),
-                Int32.Parse(l.Substring(9,2)),
-                Int32.Parse(l.Substring(12,2)),
-                Int32.Parse(l.Substring(15,2)),
-                0));
-
-            var datesInOrder = linesByDate.Keys.OrderBy(k => k);
+            var lines = Problem1Input.SplitToLines().OrderBy(l => l);
 
             var totalSleepTime = new Dictionary<int, int>();
             var sleepMinutesByGuard = new Dictionary<int, Dictionary<int, int>>();
 
             var currentGuardId = -1;
             var fellAsleepMinute = 0;
-            foreach (var date in datesInOrder)
+            foreach (var line in lines)
             {
-                var line = linesByDate[date];
-
                 if (line[19] == 'G')
                 {
                     currentGuardId = Int32.Parse(line.Split(' ')[3].Substring(1));
                 }
-                else if (currentGuardId == -1)
-                {
-                    continue;
-                }
-
                 if (line[19] == 'f')
                 {
-                    fellAsleepMinute = date.Minute;
+                    fellAsleepMinute = Int32.Parse(line.Substring(15,2));
                 }
                 if (line[19] == 'w')
                 {
-                    var minutesAsleep = date.Minute - fellAsleepMinute;
+                    var wakeMinute = Int32.Parse(line.Substring(15,2));
+                    var minutesAsleep = wakeMinute - fellAsleepMinute;
                     if (!totalSleepTime.ContainsKey(currentGuardId))
                     {
                         totalSleepTime[currentGuardId] = 0;
@@ -1137,7 +1122,7 @@ namespace advent_of_code_2018
                     }
                     totalSleepTime[currentGuardId] += minutesAsleep;
                     var guardMinutes = sleepMinutesByGuard[currentGuardId];
-                    for (int i = fellAsleepMinute; i < date.Minute; i++)
+                    for (int i = fellAsleepMinute; i < wakeMinute; i++)
                     {
                         if (!guardMinutes.ContainsKey(i))
                         {
@@ -1156,42 +1141,27 @@ namespace advent_of_code_2018
 
         public static int SolveProblem2()
         {
-            var lines = Problem1Input.SplitToLines();
-            var linesByDate = lines.ToDictionary(l => new DateTime(
-                Int32.Parse(l.Substring(1,4)),
-                Int32.Parse(l.Substring(6,2)),
-                Int32.Parse(l.Substring(9,2)),
-                Int32.Parse(l.Substring(12,2)),
-                Int32.Parse(l.Substring(15,2)),
-                0));
-
-            var datesInOrder = linesByDate.Keys.OrderBy(k => k);
+            var lines = Problem1Input.SplitToLines().OrderBy(l => l);
 
             var totalSleepTime = new Dictionary<int, int>();
             var sleepMinutesByGuard = new Dictionary<int, Dictionary<int, int>>();
 
             var currentGuardId = -1;
             var fellAsleepMinute = 0;
-            foreach (var date in datesInOrder)
+            foreach (var line in lines)
             {
-                var line = linesByDate[date];
-
                 if (line[19] == 'G')
                 {
                     currentGuardId = Int32.Parse(line.Split(' ')[3].Substring(1));
                 }
-                else if (currentGuardId == -1)
-                {
-                    continue;
-                }
-
                 if (line[19] == 'f')
                 {
-                    fellAsleepMinute = date.Minute;
+                    fellAsleepMinute = Int32.Parse(line.Substring(15,2));
                 }
                 if (line[19] == 'w')
                 {
-                    var minutesAsleep = date.Minute - fellAsleepMinute;
+                    var wakeMinute = Int32.Parse(line.Substring(15,2));
+                    var minutesAsleep = wakeMinute - fellAsleepMinute;
                     if (!totalSleepTime.ContainsKey(currentGuardId))
                     {
                         totalSleepTime[currentGuardId] = 0;
@@ -1199,7 +1169,7 @@ namespace advent_of_code_2018
                     }
                     totalSleepTime[currentGuardId] += minutesAsleep;
                     var guardMinutes = sleepMinutesByGuard[currentGuardId];
-                    for (int i = fellAsleepMinute; i < date.Minute; i++)
+                    for (int i = fellAsleepMinute; i < wakeMinute; i++)
                     {
                         if (!guardMinutes.ContainsKey(i))
                         {
