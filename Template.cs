@@ -6,7 +6,8 @@ namespace advent_of_code_2018
 
     public class DayQQ
     {
-        private const string Problem1Input = @"";
+        private const string ProblemInput = @"";
+        private const string ProblemTestInput = @"";
 
         public static int SolveProblem1()
         {
