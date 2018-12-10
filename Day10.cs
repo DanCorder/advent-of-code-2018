@@ -401,7 +401,6 @@ position=<-3,  6> velocity=< 2, -1>";
                 if (close)
                 {
                     Console.WriteLine(time);
-                    var dummy = "breakpoint here";
                 }
 
                 foreach (var point in points)
@@ -410,8 +409,6 @@ position=<-3,  6> velocity=< 2, -1>";
                 }
                 time++;
             }
-
-            return 0;
         }
 
         private static bool PrintPoints(List<Point> points)
