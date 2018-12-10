@@ -24,8 +24,8 @@ namespace advent_of_code_2018
             // Console.WriteLine(Day08.SolveProblem1());
             // Console.WriteLine(Day08.SolveProblem2());
             // Console.WriteLine(Day09.SolveProblem1());
-            Console.WriteLine(Day09.SolveProblem2());
-            // Console.WriteLine(Day10.SolveProblem1());
+            // Console.WriteLine(Day09.SolveProblem2());
+            Console.WriteLine(Day10.SolveProblem1());
             // Console.WriteLine(Day10.SolveProblem2());
             // Console.WriteLine(Day11.SolveProblem1());
             // Console.WriteLine(Day11.SolveProblem2());
